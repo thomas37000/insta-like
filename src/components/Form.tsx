@@ -3,6 +3,7 @@ import { Images } from "../interfaces/images-inteface";
 import "./Form.css";
 
 interface Event<T = EventTarget> {
+  preventDefault: any;
   target: T;
 }
 
@@ -10,14 +11,16 @@ const Form = () => {
   const [image, setImage] = useState<Images | null | any>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const Types = ["image/png", "image/jpg", "image/svg", "image/webp"];
+  const Types = ["image/png", "image/jpeg", "image/svg", "image/webp"];
 
   function myEventListener(event: Event<HTMLInputElement>) {
+    event.preventDefault();
     const selectedImg = event.target.files && event.target.files[0];
     console.log(selectedImg);
 
     if (selectedImg && Types.includes(selectedImg.type)) {
       setImage(selectedImg);
+      setError("");
     } else {
       setImage(null);
       setError("Please select an image file like png or jpg or svg or webp");
@@ -29,7 +32,8 @@ const Form = () => {
       <form className="formulaire">
         Ajouter une image
         <input type="file" onChange={myEventListener} />
-        <input type="submit" value="Envoyer" />
+        <div>{error && <div className="error">{error}</div>}</div>
+        {image && <div>{image.name} </div>}
       </form>
     </div>
   );
