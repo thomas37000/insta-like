@@ -1,0 +1,12 @@
+.form-container {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.formulaire input {
+  padding: 0.5rem;
+  margin: 0.3rem;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
