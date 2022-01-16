@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Images } from "../interfaces/images-inteface";
+import ProgressBar from "./ProgressBar";
 import "./Form.css";
 
 interface Event<T = EventTarget> {
@@ -34,6 +35,8 @@ const Form = () => {
         <input type="file" onChange={myEventListener} />
         <div>{error && <div className="error">{error}</div>}</div>
         {image && <div>{image.name} </div>}
+        {/* {image && <ProgressBar image={image} setImage={setImage} />} */}
+        {image && <ProgressBar image={image} />}
       </form>
     </div>
   );

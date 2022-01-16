@@ -14,3 +14,9 @@
 .error {
     color: tomato;
 }
+
+.progress-bar {
+    height: 5px;
+    background-color: tomato;
+    margin-top: 20px;
+}
